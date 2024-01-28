@@ -21,7 +21,7 @@ const userNavigation = [
   { name: 'Your Profile', href: '/profile' },
 ]
 
-export default function AdminNavbar() {
+export default function AdminSidebar() {
 
   const [open, setOpen] = useState(false)
   const location = useLocation()

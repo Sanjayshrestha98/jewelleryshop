@@ -32,7 +32,7 @@ function Orders() {
 
     const getAllOrders = async () => {
         try {
-            let result = await axios.get('/admin/order', {
+            let result = await axios.get('cart/admin/order', {
                 params: {
                     search: keyword,
                     page: currentOrderPage,
@@ -88,12 +88,12 @@ function Orders() {
         try {
             Swal.fire({
                 title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                text: "Do you want to change the status!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, Delete it!'
+                confirmButtonText: 'Yes!'
             }).then(async (result) => {
                 if (result.isConfirmed) {
                     let result = await axios.put('cart/change-status', {
@@ -151,8 +151,10 @@ function Orders() {
                     <thead className='font-semibold border-b bg-gray-100'>
                         <tr className='opacity-75'>
                             <th className='p-3'>Customer Name</th>
+                            <th className='p-3'>Contact</th>
                             <th className='p-3'>Product</th>
                             <th className='p-3'>Quantity</th>
+                            <th className='p-3'>Status</th>
                             <th className='p-3'>Total Price</th>
                             <th className='p-3'>Actions</th>
                         </tr>
@@ -164,19 +166,25 @@ function Orders() {
                                 <p className='p-5 font-semibold text-red-800'>No Data</p> :
                                 orderData.map((value, index) => (
                                     <tr key={index} className='border-b'>
-                                        <td className='p-3'>{value?.order_name}</td>
-                                        <td className='p-3'>{value?.order_sku}</td>
-                                        <td className='p-3'>{value?.stock}</td>
-                                        <td className='p-3'>{value?.category?.name}</td>
-                                        <td className='p-3'>Rs. {value?.price}</td>
+                                        <td className='p-3'>{value?.cart?.user_id?.firstname}</td>
+                                        <td className='p-3'>{value?.cart?.user_id?.contact}</td>
+                                        <td className='p-3'>#{value?.cart?.cart_no}</td>
+                                        <td className='p-3'>{value?.quantity}</td>
+                                        <td className='p-3'>{value?.status}</td>
+                                        <td className='p-3'>Rs. {value?.cart?.grand_total}</td>
                                         <td className='p-3 flex gap-2 flex-wrap max-w-fit'>
-                                            <button className='bg-red-700 text-white p-2 rounded' onClick={() => {
+                                            {/* <button className='bg-red-700 text-white p-2 rounded' onClick={() => {
                                                 removeItem(value._id)
                                             }}><FaTrashAlt />
-                                            </button>
+                                            </button> */}
                                             <select onChange={(e) => {
-                                                changeStatus(value._id, e.target.value)
+                                                if (e.target.value) {
+                                                    changeStatus(value._id, e.target.value)
+                                                }
                                             }}>
+                                                <option className='' value={''}>
+                                                    Change Status
+                                                </option>
                                                 <option className='' value={'PROCEED'}>
                                                     Processing
                                                 </option>
@@ -184,12 +192,12 @@ function Orders() {
                                                     Delivered
                                                 </option>
                                             </select>
-                                            <button onClick={() => {
+                                            {/* <button onClick={() => {
                                                 setSelectedOrderData(value)
                                                 openEditModal()
                                             }} className='bg-blue-700 text-white p-2 rounded'>
                                                 <FaEdit />
-                                            </button>
+                                            </button> */}
                                         </td>
                                     </tr>
                                 )))

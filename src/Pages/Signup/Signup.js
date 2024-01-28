@@ -74,7 +74,7 @@ function Signup() {
                         src="/app_logo.png"
                         alt="buildup"
                     />
-                    <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                    <h2 className="mt-10 text-left text-2xl font-bold leading-9 tracking-tight text-gray-900">
                         Register
                     </h2>
                 </div>
@@ -234,7 +234,7 @@ function Signup() {
                                 <div className='col-span-full mt-4'>
                                     <button
                                         type="submit"
-                                        className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 px-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                        className="flex w-full justify-center rounded-md bg-gray-800 px-3 py-1.5  text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                     >
                                         Register
                                     </button>

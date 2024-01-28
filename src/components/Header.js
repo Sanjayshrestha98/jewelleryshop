@@ -281,10 +281,14 @@ const Header = () => {
                 <nav className="flex items-center justify-between px-10 py-5" aria-label="Global">
 
                     <ul className='flex gap-10 justify-center w-full font-semibold' >
-                        <li>All Products</li>
+                        <li className='cursor-pointer' onClick={() => {
+                            navigate('/product');
+                        }}>All Products</li>
                         {
                             categoryData?.map((value, index) => (
-                                <li>All Products</li>
+                                <li className='cursor-pointer' onClick={() => {
+                                    navigate('/product', { state: { category: value._id } });
+                                }}>{value.name} </li>
 
                             ))
                         }

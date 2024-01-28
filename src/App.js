@@ -10,7 +10,7 @@ import { Toaster } from 'react-hot-toast';
 import AuthContextProvider from './context/authContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Dashboard from './Pages/AdminPages/Dashboard';
-import AdminNavbar from './components/AdminComponents/AdminNavbar';
+import AdminSidebar from './components/AdminComponents/AdminSidebar';
 import SingleProduct from './Pages/Product/SingleProduct';
 import AllProducts from './Pages/Product/AllProducts';
 import Cartpage from './Pages/Cartpage/Cartpage';
@@ -34,7 +34,7 @@ function App() {
         <Toaster />
         <div className='min-h-screen flex flex-col'>
           <Header />
-          <AdminNavbar />
+          <AdminSidebar />
           <div className='flex-1'>
             <Routes>
               <Route index element={<Home />} />
