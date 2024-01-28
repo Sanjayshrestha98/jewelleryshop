@@ -12,7 +12,7 @@ import toast from 'react-hot-toast';
 
 
 
-const AppNavbar = () => {
+const Header = () => {
     const authUser = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
@@ -48,14 +48,14 @@ const AppNavbar = () => {
     }, [])
 
     const navigation = [
-        { name: 'Home', href: '/' },
-        {
-            name: 'Category', href: '/category',
-            children: categoryData ? categoryData : []
-        },
-        { name: 'Product', href: '/product' },
+        // { name: 'Home', href: '/' },
+        // {
+        //     name: 'Category', href: '/category',
+        //     children: categoryData ? categoryData : []
+        // },
+        { name: 'New Releases', href: '/product' },
         { name: 'About Us', href: '/about' },
-        { name: 'Contact', href: '/contact' },
+        // { name: 'Contact', href: '/contact' },
     ]
 
 
@@ -106,90 +106,66 @@ const AppNavbar = () => {
 
     return (
         <div
-            className={`transition ease-in z-30 sticky top-0 duration-300 hover:bg-white ${navbackground && "bg-white"
-                } ${location.pathname === '/login' && 'hidden'} ${location.pathname === '/signup' && 'hidden'} ${location.pathname.includes('dashboard') && 'hidden'}`}
+            className={`transition ease-in z-30 sticky top-0 duration-300  ${location.pathname === '/login' && 'hidden'} ${location.pathname === '/signup' && 'hidden'} ${location.pathname.includes('dashboard') && 'hidden'}`}
             onClick={handelNotification}
         >
-            <header className={` inset-x-0 top-0 z-50 ${navbackground ? "bg-white" : "bg-transparent"}`}>
-                <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+            <header className={` inset-x-0 top-0 z-50 bg-white`}>
+                <nav className="flex items-center justify-between px-6 py-4 lg:px-8 border-b" aria-label="Global">
+
                     <div className="flex lg:flex-1">
-                        <a href="#" className="-m-1.5 p-1.5">
-                            <span className="sr-only">Your Company</span>
-                            <img
-                                className="h-8 w-auto"
-                                src="/app_logo.png"
-                                alt="applogo"
-                            />
-                        </a>
-                    </div>
-                    <div className="flex lg:hidden">
-                        <button
-                            type="button"
-                            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-                            onClick={() => setMobileMenuOpen(true)}
-                        >
-                            <span className="sr-only">Open main menu</span>
-                            <FaBars className="h-6 w-6" aria-hidden="true" />
-                        </button>
-                    </div>
-                    <div className="hidden lg:flex lg:gap-x-12 ">
-                        {navigation.map((item, index) => (
-                            <div role='button' key={index} onClick={() => {
-                                if (!item.children) {
-                                    navigate(item.href)
-                                }
-                            }} href={item.href} className={`relative text-sm group hover:border-b-blue-700 px-3 hover:border-b-2 border-b-2 border-transparent py-2 font-normal ${location.pathname === item.href &&
-                                "border-b-2 border-b-blue-700 "
-                                }`}>
-                                {item.name}
-                                {
-                                    item.children &&
-                                    <div className='hidden group-hover:block absolute pt-5 w-[150px] left-0'>
-                                        <ul>
-                                            {
-                                                item.children.map((value, index) => (
-                                                    <li key={index} onClick={() => {
-                                                        navigate('/product', { state: { category: value._id } });
-                                                    }} role='button' className='p-2 border hover:bg-gray-50 bg-white'>{value.name}</li>
-                                                ))}
-                                        </ul>
+                        <div className="hidden lg:flex lg:gap-x-12 ">
+                            {navigation.map((item, index) => (
+                                <div role='button' key={index} onClick={() => {
+                                    if (!item.children) {
+                                        navigate(item.href)
+                                    }
+                                }} href={item.href} className={`relative text-lg font-semibold group hover:border-b-blue-700 px-3 hover:border-b-2 border-b-2 border-transparent py-2 ${location.pathname === item.href &&
+                                    "border-b-2 border-b-blue-700 "
+                                    }`}>
+                                    {item.name}
+                                    {
+                                        item.children &&
+                                        <div className='hidden group-hover:block absolute pt-5 w-[150px] left-0'>
+                                            <ul>
+                                                {
+                                                    item.children.map((value, index) => (
+                                                        <li key={index} onClick={() => {
+                                                            navigate('/product', { state: { category: value._id } });
+                                                        }} role='button' className='p-2 border hover:bg-gray-50 bg-white'>{value.name}</li>
+                                                    ))}
+                                            </ul>
 
-                                    </div>
+                                        </div>
 
-                                }
-                            </div>
-                        ))}
+                                    }
+                                </div>
+                            ))}
+
+                        </div>
                     </div>
+                    <a href="/" className="-m-1.5 p-1.5">
+                        <span className="sr-only">Jojolapa</span>
+                        <img
+                            className="h-8 w-auto"
+                            src="/app_logo.png"
+                            alt="applogo"
+                        />
+                    </a>
+
+
                     <div className="hidden lg:flex lg:flex-1 lg:justify-end">
                         <div className="flex items-center">
                             {isAuthenticated ? (
                                 <div className="flex items-center">
                                     <div className="flex items-center mr-8 gap-4">
-                                        {/* <button
-                                            onClick={notificationHandler}
-                                            className="relative transform cursor-pointer hover:scale-110"
-                                        >
-                                            <GoBell size={23} strokeWidth={0.5} />
-
-                                            <div className="animate-ping w-2 h-2 rounded-full bg-red-400 border border-white absolute left-3 top-0" />
-                                        </button> */}
-
                                         <div className=" transform cursor-pointer hover:scale-110">
                                             <Link to={"/wishlist"}>
-                                                {/* <img src="/heartoutline.png" /> */}
                                                 <GoHeart size={23} strokeWidth={0.5} />
                                             </Link>
                                         </div>
 
-                                        {/* <div className=" transform cursor-pointer hover:scale-110">
-                                            <Link to={"/like"}>
-                                                <FaThumbsUp size={20} className="" />
-                                            </Link>
-                                        </div> */}
-
                                         <div className=" transform cursor-pointer hover:scale-110">
                                             <Link to={"/cartpage"}>
-                                                {/* <img src="/Cart.png" /> */}
                                                 <MdOutlineShoppingBag size={23} />
 
                                             </Link>
@@ -200,7 +176,7 @@ const AppNavbar = () => {
                                         <span className="group relative inline-block">
                                             <button
                                                 type="button"
-                                                className="flex items-center mr-3 text-sm md:mr-0 h-full cursor-pointer"
+                                                className="flex items-center mr-3  md:mr-0 h-full cursor-pointer"
                                                 id="user-menu-button"
                                                 data-dropdown-toggle="dropdown"
                                             >
@@ -224,7 +200,7 @@ const AppNavbar = () => {
 
                                             <ul className="absolute right-0 hidden pt-1 w-40 p-2 border rounded bg-white text-gray-700 group-hover:block">
                                                 <Link to={"/profile"}>
-                                                    <li className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
+                                                    <li className="cursor-pointer text-gray-600  leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
                                                         <div className="flex items-center">
                                                             <svg
                                                                 xmlns="http://www.w3.org/2000/svg"
@@ -248,7 +224,7 @@ const AppNavbar = () => {
                                                 </Link>
                                                 <li
                                                     onClick={() => logout()}
-                                                    className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center"
+                                                    className="cursor-pointer text-gray-600  leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center"
                                                 >
                                                     <svg
                                                         xmlns="http://www.w3.org/2000/svg"
@@ -274,7 +250,7 @@ const AppNavbar = () => {
                                 <div className="flex gap-2 mr-4  ">
                                     <div className="cursor-pointer ">
                                         <Link to={"/login"}>
-                                            <button className="px-3 py-2 text-sm hover:bg-blue-200 duration-150 hover:scale-105 rounded-full">
+                                            <button className="px-3 py-2 font-bold  hover:bg-blue-200 duration-150 hover:scale-105 rounded-full">
                                                 Login
                                             </button>
                                         </Link>
@@ -282,7 +258,7 @@ const AppNavbar = () => {
 
                                     <div className="  cursor-pointer ">
                                         <Link to={"/signup"}>
-                                            <button className="px-4 py-2 border text-sm hover:bg-blue-200 duration-150 hover:scale-105 rounded-full">
+                                            <button className="px-4 py-2 border  hover:bg-blue-200 duration-150 hover:scale-105 rounded-full">
                                                 Sign Up
                                             </button>
                                         </Link>
@@ -301,6 +277,18 @@ const AppNavbar = () => {
                             />
                         </div>
                     </div>
+                </nav>
+                <nav className="flex items-center justify-between px-10 py-5" aria-label="Global">
+
+                    <ul className='flex gap-10 justify-center w-full font-semibold' >
+                        <li>All Products</li>
+                        {
+                            categoryData?.map((value, index) => (
+                                <li>All Products</li>
+
+                            ))
+                        }
+                    </ul>
                 </nav>
                 {
                     mobileMenuOpen &&
@@ -334,7 +322,7 @@ const AppNavbar = () => {
                                             <a
                                                 key={index}
                                                 href={item.href}
-                                                className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                                className="-mx-3 block rounded-lg px-3 py-2 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50"
                                             >
                                                 {item.name}
                                             </a>
@@ -377,7 +365,7 @@ const AppNavbar = () => {
                                                     <span className="group relative inline-block">
                                                         <button
                                                             type="button"
-                                                            className="flex items-center mr-3 text-sm md:mr-0 h-full cursor-pointer"
+                                                            className="flex items-center mr-3  md:mr-0 h-full cursor-pointer"
                                                             id="user-menu-button"
                                                             data-dropdown-toggle="dropdown"
                                                         >
@@ -401,7 +389,7 @@ const AppNavbar = () => {
 
                                                         <ul className="absolute right-0 hidden pt-1 w-40 p-2 border rounded bg-white text-gray-700 group-hover:block">
                                                             <Link to={"/profile"}>
-                                                                <li className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
+                                                                <li className="cursor-pointer text-gray-600  leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
                                                                     <div className="flex items-center">
                                                                         <svg
                                                                             xmlns="http://www.w3.org/2000/svg"
@@ -425,7 +413,7 @@ const AppNavbar = () => {
                                                             </Link>
                                                             <li
                                                                 onClick={() => logout()}
-                                                                className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center"
+                                                                className="cursor-pointer text-gray-600  leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center"
                                                             >
                                                                 <svg
                                                                     xmlns="http://www.w3.org/2000/svg"
@@ -451,7 +439,7 @@ const AppNavbar = () => {
                                             <div className="py-6 w-full">
                                                 <a
                                                     href={"/signup"}
-                                                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50"
                                                 >
                                                     Sign Up
                                                 </a>
@@ -460,7 +448,7 @@ const AppNavbar = () => {
                                                     onClick={() => {
                                                         setMobileMenuOpen(false)
                                                     }}
-                                                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50"
                                                 >
                                                     Log in
                                                 </Link>
@@ -481,4 +469,4 @@ const AppNavbar = () => {
     );
 }
 
-export default AppNavbar;
+export default Header;

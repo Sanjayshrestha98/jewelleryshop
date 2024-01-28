@@ -3,7 +3,7 @@ import './App.css';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
 import Page404 from './Pages/404/Page404';
-import AppNavbar from './components/AppNavbar';
+import Header from './components/Header';
 import Signup from './Pages/Signup/Signup';
 import Contact from './Pages/Contact/Contact';
 import { Toaster } from 'react-hot-toast';
@@ -21,7 +21,7 @@ import Product from './Pages/AdminPages/Product/Product';
 import User from './Pages/AdminPages/User/User';
 import Profile from './Pages/Profile/Profile';
 import Footer from './components/Footer';
-import AboutPage from './Pages/AboutUs/AboutPage';
+import About from './Pages/AboutUs/About';
 import Orders from './Pages/AdminPages/Orders/Orders';
 
 function App() {
@@ -33,7 +33,7 @@ function App() {
       <AuthContextProvider>
         <Toaster />
         <div className='min-h-screen flex flex-col'>
-          <AppNavbar />
+          <Header />
           <AdminNavbar />
           <div className='flex-1'>
             <Routes>
@@ -42,7 +42,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/about" element={<AboutPage />} />
+              <Route path="/about" element={<About />} />
 
               {/* <Route path="/cartpage" element={<Cartpage />} /> */}
 
