@@ -1,10 +1,11 @@
 import toast from 'react-hot-toast'
 import axios from '../../axios'
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Home() {
 
+    const navigate = useNavigate();
 
     const [productList, setProductList] = useState()
     const [categoryData, setCategoryData] = useState([])
@@ -127,7 +128,11 @@ export default function Home() {
 
                     <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                         {categoryData?.map((value, index) => (
-                            <Link to={`/value/${value.product_sku}`} key={index} className="group relative" role='button'>
+                            <div
+                                onClick={() => {
+                                    navigate('/product', { state: { category: value._id } });
+                                }}
+                                key={index} className="group relative" role='button'>
                                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                                     <img
                                         src={`${process.env.REACT_APP_IMG_URI}${value.image}`}
@@ -144,7 +149,7 @@ export default function Home() {
                                         {/* <p className="mt-1 text-gray-500 capitalize">{value.variant[0].variant_type[0].color}</p> */}
                                     </div>
                                 </div>
-                            </Link>
+                            </div>
                         ))}
                     </div>
                 </div>
