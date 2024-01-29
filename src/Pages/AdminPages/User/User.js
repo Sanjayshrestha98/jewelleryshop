@@ -122,6 +122,7 @@ function User() {
                 <table className="table-auto w-full text-left ">
                     <thead className='font-semibold border-b bg-gray-100'>
                         <tr className='opacity-75'>
+                            <th className='p-3'>#</th>
                             <th className='p-3'>First name</th>
                             <th className='p-3'>Last name</th>
                             <th className='p-3'>Email</th>
@@ -137,6 +138,7 @@ function User() {
                                 <p className='p-5 font-semibold text-red-800'>No Data</p> :
                                 userData.map((value, index) => (
                                     <tr key={index} className='border-b'>
+                                        <td className='p-3'>{index + 1}</td>
                                         <td className='p-3'>{value?.firstname}</td>
                                         <td className='p-3'>{value?.lastname}</td>
                                         <td className='p-3'>{value?.email}</td>

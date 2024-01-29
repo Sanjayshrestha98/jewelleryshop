@@ -123,6 +123,8 @@ function Product() {
         <table className="table-auto w-full text-left ">
           <thead className='font-semibold border-b bg-gray-100'>
             <tr className='opacity-75'>
+              <th className='p-3'>#</th>
+              <th className='p-3'>Image</th>
               <th className='p-3'>Name</th>
               <th className='p-3'>SKU</th>
               <th className='p-3'>Stock</th>
@@ -138,6 +140,18 @@ function Product() {
                 <p className='p-5 font-semibold text-red-800'>No Data</p> :
                 productData.map((value, index) => (
                   <tr key={index} className='border-b'>
+                    <td className='p-3'>{index + 1}</td>
+                    <td className='p-3'>
+                      {
+                        value?.images ?
+
+                          <img className='h-10' src={`${process.env.REACT_APP_IMG_URI}${value?.images[0]}`} />
+
+                          :
+                          <label className='error'>No Image</label>
+                      }
+
+                    </td>
                     <td className='p-3'>{value?.product_name}</td>
                     <td className='p-3'>{value?.product_sku}</td>
                     <td className='p-3'>{value?.stock}</td>

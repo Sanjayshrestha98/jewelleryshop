@@ -46,17 +46,18 @@ function AdminContact() {
         <h1 className="text-4xl font-bold tracking-tight text-gray-900">Contacts</h1>
       </div>
 
-      <div>
+      {/* <div>
         <input className='border p-2' type='string' placeholder='Search' onChange={(e) => {
           setKeyword(e.target.value)
           setCurrentContactPage(1)
         }} />
-      </div>
+      </div> */}
 
       <div className='w-full my-5  bg-white'>
         <table className="table-auto w-full text-left ">
           <thead className='font-semibold border-b bg-gray-100'>
             <tr className='opacity-75'>
+              <th className='p-3'>#</th>
               <th className='p-3'>Firstname</th>
               <th className='p-3'>Lastname</th>
               <th className='p-3'>Contact</th>
@@ -71,6 +72,7 @@ function AdminContact() {
                 <p className='p-5 font-semibold text-red-800'>No Data</p> :
                 contactData.map((value, index) => (
                   <tr key={index} className='border-b'>
+                    <td className='p-3'>{index + 1}</td>
                     <td className='p-3'>{value?.firstname}</td>
                     <td className='p-3'>{value?.lastname}</td>
                     <td className='p-3'>{value?.mobile_no}</td>

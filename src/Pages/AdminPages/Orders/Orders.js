@@ -141,7 +141,7 @@ function Orders() {
         }} className='bg-gray-800 p-3 rounded-md text-white font-semibold px-4'>Add Order</button> */}
             </div>
             <div>
-                <input className='border p-2' type='string' placeholder='Search' onChange={(e) => {
+                <input className='border p-2' type='string' placeholder='Search By Email' onChange={(e) => {
                     setKeyword(e.target.value)
                     setCurrentOrderPage(1)
                 }} />
@@ -150,8 +150,10 @@ function Orders() {
                 <table className="table-auto w-full text-left ">
                     <thead className='font-semibold border-b bg-gray-100'>
                         <tr className='opacity-75'>
+                            <th className='p-3'>#</th>
                             <th className='p-3'>Customer Name</th>
                             <th className='p-3'>Contact</th>
+                            <th className='p-3'>email</th>
                             <th className='p-3'>Cart #</th>
                             <th className='p-3'>Product</th>
                             <th className='p-3'>Quantity</th>
@@ -167,8 +169,10 @@ function Orders() {
                                 <p className='p-5 font-semibold text-red-800'>No Data</p> :
                                 orderData.map((value, index) => (
                                     <tr key={index} className='border-b'>
+                                        <td className='p-3'>{index + 1}</td>
                                         <td className='p-3'>{value?.cart?.user_id?.firstname}</td>
                                         <td className='p-3'>{value?.cart?.user_id?.contact}</td>
+                                        <td className='p-3'>{value?.cart?.user_id?.email}</td>
                                         <td className='p-3'>{value?.cart?.cart_no}</td>
                                         <td className='p-3'>{value?.item?.product_name}</td>
                                         <td className='p-3'>{value?.quantity}</td>
