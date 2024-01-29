@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
@@ -23,19 +23,23 @@ import Profile from './Pages/Profile/Profile';
 import Footer from './components/Footer';
 import About from './Pages/AboutUs/About';
 import Orders from './Pages/AdminPages/Orders/Orders';
+import AdminHeader from './components/AdminComponents/AdminHeader';
+import AdminContact from './Pages/AdminPages/Contact/AdminContact';
 
 function App() {
 
+  const location = useLocation()
 
-
+  console.log(location.pathname.includes('dashboard'))
   return (
     <div>
       <AuthContextProvider>
         <Toaster />
         <div className='min-h-screen flex flex-col'>
           <Header />
-          <AdminSidebar />
-          <div className='flex-1'>
+          <AdminHeader />
+          <div className={`flex-1  ${location.pathname.includes('dashboard') ? "flex" : ""}`}>
+            <AdminSidebar />
             <Routes>
               <Route index element={<Home />} />
               <Route path="/" element={<Home />} />
@@ -110,6 +114,14 @@ function App() {
                 element={
                   <ProtectedAdminRoute>
                     <Orders />
+                  </ProtectedAdminRoute>
+                }
+              />
+              <Route
+                path="/dashboard/contact"
+                element={
+                  <ProtectedAdminRoute>
+                    <AdminContact />
                   </ProtectedAdminRoute>
                 }
               />

@@ -7,7 +7,7 @@ function About() {
                 className="absolute h-screen  object-cover w-full rounded -z-10 left-0 top-0" />
 
             <div className="w-full px-6 mb-10 lg:w-1/2 lg:mb-0 text-white  z-50">
-                {/* <div className="pl-4 mb-6 border-l-4 border-blue-500 ">
+                {/* <div className="pl-4 mb-6 border-l-4 border-gray-500 ">
                 </div> */}
                 <h1 className="mt-2 py-4 text-3xl border-b font-semibold md:text-5xl ">
                     About Us

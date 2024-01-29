@@ -133,23 +133,23 @@ function AllProducts() {
                                         <div className="pt-6" id="filter-section-1">
                                             <div className="space-y-4">
                                                 <div className="flex items-center">
-                                                    <input id="filter-category-0" name="category[]" value="new-arrivals" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
+                                                    <input id="filter-category-0" name="category[]" value="new-arrivals" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-gray-600 focus:ring-gray-500" />
                                                     <label for="filter-category-0" className="ml-3 text-sm text-gray-600">New Arrivals</label>
                                                 </div>
                                                 <div className="flex items-center">
-                                                    <input id="filter-category-1" name="category[]" value="sale" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
+                                                    <input id="filter-category-1" name="category[]" value="sale" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-gray-600 focus:ring-gray-500" />
                                                     <label for="filter-category-1" className="ml-3 text-sm text-gray-600">Sale</label>
                                                 </div>
                                                 <div className="flex items-center">
-                                                    <input id="filter-category-2" name="category[]" value="travel" type="checkbox" checked className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
+                                                    <input id="filter-category-2" name="category[]" value="travel" type="checkbox" checked className="h-4 w-4 rounded border-gray-300 text-gray-600 focus:ring-gray-500" />
                                                     <label for="filter-category-2" className="ml-3 text-sm text-gray-600">Travel</label>
                                                 </div>
                                                 <div className="flex items-center">
-                                                    <input id="filter-category-3" name="category[]" value="organization" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
+                                                    <input id="filter-category-3" name="category[]" value="organization" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-gray-600 focus:ring-gray-500" />
                                                     <label for="filter-category-3" className="ml-3 text-sm text-gray-600">Organization</label>
                                                 </div>
                                                 <div className="flex items-center">
-                                                    <input id="filter-category-4" name="category[]" value="accessories" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
+                                                    <input id="filter-category-4" name="category[]" value="accessories" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-gray-600 focus:ring-gray-500" />
                                                     <label for="filter-category-4" className="ml-3 text-sm text-gray-600">Accessories</label>
                                                 </div>
                                             </div>
@@ -247,7 +247,7 @@ function AllProducts() {
                                                             // console.log('e.target.value', e.target.value)
                                                             // setSelectedCateogry(e.target.value)
                                                             navigate('/product', { state: { category: value._id } });
-                                                        }} id={value._id} checked={category === value._id} name={value.name} value={value._id} type="radio" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
+                                                        }} id={value._id} checked={category === value._id} name={value.name} value={value._id} type="radio" className="h-4 w-4 rounded border-gray-300 text-gray-600 focus:ring-gray-500" />
                                                         <label for={value._id} className="ml-3 text-sm text-gray-600">{value.name}</label>
                                                     </div>
                                                 ))

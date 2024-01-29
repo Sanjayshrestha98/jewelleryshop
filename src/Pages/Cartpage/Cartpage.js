@@ -171,7 +171,7 @@ function Cartpage() {
 
                                 {/* <li className="flex py-6">
                                     <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                        <img src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg" alt="Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch." className="h-full w-full object-cover object-center" />
+                                        <img src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg" alt="Front of satchel with gray canvas body, black straps and handle, drawstring top, and front zipper pouch." className="h-full w-full object-cover object-center" />
                                     </div>
 
                                     <div className="ml-4 flex flex-1 flex-col">
@@ -182,7 +182,7 @@ function Cartpage() {
                                                 </h3>
                                                 <p className="ml-4">$32.00</p>
                                             </div>
-                                            <p className="mt-1 text-sm text-gray-500">Blue</p>
+                                            <p className="mt-1 text-sm text-gray-500">gray</p>
                                         </div>
                                         <div className="flex flex-1 items-center mt-2 justify-between text-sm">
                                             <div className=" flex items-center">
@@ -323,14 +323,14 @@ function Cartpage() {
                                         <p className="text-gray-800">Rs. 00.00</p>
                                     </div>
                                 </div>
-                                {/* <div className="pb-4 border-b border-gray-200 mb-4"><a className="text-blue-500 hover:text-blue-600 transition duration-200" href="#">Change Shipping Address</a></div> */}
+                                {/* <div className="pb-4 border-b border-gray-200 mb-4"><a className="text-gray-500 hover:text-gray-600 transition duration-200" href="#">Change Shipping Address</a></div> */}
                                 <div className="flex items-center justify-between flex-wrap gap-2 mb-4 mt-10">
                                     <label className="text-gray-700 font-semibold text-lg">Order Total</label>
                                     <label className="text-gray-700 font-semibold text-lg">Rs. {cartData?.cart?.grand_total}</label>
                                 </div>
                                 <button onClick={() => {
                                     openAddModal()
-                                }} className="bg-blue-500 mt-4 py-3 px-4 rounded-sm text-white text-center hover:bg-blue-600 transition duration-200 w-full inline-block" href="#">Checkout Now</button>
+                                }} className="bg-gray-500 mt-4 py-3 px-4 rounded-sm text-white text-center hover:bg-gray-600 transition duration-200 w-full inline-block" href="#">Checkout Now</button>
                             </div>
                         </div>
                     }

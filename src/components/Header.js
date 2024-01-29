@@ -119,8 +119,8 @@ const Header = () => {
                                     if (!item.children) {
                                         navigate(item.href)
                                     }
-                                }} href={item.href} className={`relative text-lg font-semibold group hover:border-b-blue-700 px-3 hover:border-b-2 border-b-2 border-transparent py-2 ${location.pathname === item.href &&
-                                    "border-b-2 border-b-blue-700 "
+                                }} href={item.href} className={`relative text-lg font-semibold group hover:border-b-gray-700 px-3 hover:border-b-2 border-b-2 border-transparent py-2 ${location.pathname === item.href &&
+                                    "border-b-2 border-b-gray-700 "
                                     }`}>
                                     {item.name}
                                     {
@@ -200,7 +200,7 @@ const Header = () => {
 
                                             <ul className="absolute right-0 hidden pt-1 w-40 p-2 border rounded bg-white text-gray-700 group-hover:block">
                                                 <Link to={"/profile"}>
-                                                    <li className="cursor-pointer text-gray-600  leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
+                                                    <li className="cursor-pointer text-gray-600  leading-3 tracking-normal py-2 hover:text-gray-700 focus:text-gray-700 focus:outline-none">
                                                         <div className="flex items-center">
                                                             <svg
                                                                 xmlns="http://www.w3.org/2000/svg"
@@ -224,7 +224,7 @@ const Header = () => {
                                                 </Link>
                                                 <li
                                                     onClick={() => logout()}
-                                                    className="cursor-pointer text-gray-600  leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center"
+                                                    className="cursor-pointer text-gray-600  leading-3 tracking-normal mt-2 py-2 hover:text-gray-700 focus:text-gray-700 focus:outline-none flex items-center"
                                                 >
                                                     <svg
                                                         xmlns="http://www.w3.org/2000/svg"
@@ -250,7 +250,7 @@ const Header = () => {
                                 <div className="flex gap-2 mr-4  ">
                                     <div className="cursor-pointer ">
                                         <Link to={"/login"}>
-                                            <button className="px-3 py-2 font-bold  hover:bg-blue-200 duration-150 hover:scale-105 rounded-full">
+                                            <button className="px-3 py-2 font-bold  hover:bg-gray-200 duration-150 hover:scale-105 rounded-full">
                                                 Login
                                             </button>
                                         </Link>
@@ -258,7 +258,7 @@ const Header = () => {
 
                                     <div className="  cursor-pointer ">
                                         <Link to={"/signup"}>
-                                            <button className="px-4 py-2 border  hover:bg-blue-200 duration-150 hover:scale-105 rounded-full">
+                                            <button className="px-4 py-2 border  hover:bg-gray-200 duration-150 hover:scale-105 rounded-full">
                                                 Sign Up
                                             </button>
                                         </Link>
@@ -393,7 +393,7 @@ const Header = () => {
 
                                                         <ul className="absolute right-0 hidden pt-1 w-40 p-2 border rounded bg-white text-gray-700 group-hover:block">
                                                             <Link to={"/profile"}>
-                                                                <li className="cursor-pointer text-gray-600  leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
+                                                                <li className="cursor-pointer text-gray-600  leading-3 tracking-normal py-2 hover:text-gray-700 focus:text-gray-700 focus:outline-none">
                                                                     <div className="flex items-center">
                                                                         <svg
                                                                             xmlns="http://www.w3.org/2000/svg"
@@ -417,7 +417,7 @@ const Header = () => {
                                                             </Link>
                                                             <li
                                                                 onClick={() => logout()}
-                                                                className="cursor-pointer text-gray-600  leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center"
+                                                                className="cursor-pointer text-gray-600  leading-3 tracking-normal mt-2 py-2 hover:text-gray-700 focus:text-gray-700 focus:outline-none flex items-center"
                                                             >
                                                                 <svg
                                                                     xmlns="http://www.w3.org/2000/svg"

@@ -110,7 +110,7 @@ function Signup() {
                                             name="firstname"
                                             autoComplete="firstname"
                                             required
-                                            className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
                                         />
                                     </div>
                                     <FieldError message={props.touched.firstname && props.errors.firstname} />
@@ -126,7 +126,7 @@ function Signup() {
                                             name="lastname"
                                             autoComplete="lastname"
                                             required
-                                            className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
                                         />
                                     </div>
                                     <FieldError message={props.touched.lastname && props.errors.lastname} />
@@ -143,7 +143,7 @@ function Signup() {
                                             name="address"
                                             autoComplete="address"
                                             required
-                                            className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
                                         />
                                     </div>
                                     <FieldError message={props.touched.address && props.errors.address} />
@@ -159,7 +159,7 @@ function Signup() {
                                             name="contact"
                                             autoComplete="contact"
                                             required
-                                            className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
                                         />
                                     </div>
                                     <FieldError message={props.touched.contact && props.errors.contact} />
@@ -182,7 +182,7 @@ function Signup() {
                                             type="email"
                                             autoComplete="email"
                                             required
-                                            className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
                                         />
                                     </div>
                                     <FieldError message={props.touched.email && props.errors.email} />
@@ -203,7 +203,7 @@ function Signup() {
                                             value={props.values.password}
                                             id="password"
                                             type={`${"password"}`}
-                                            className="block mt-2 w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            className="block mt-2 w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
                                         />
                                     </div>
                                     <FieldError message={props.touched.password && props.errors.password} />
@@ -223,7 +223,7 @@ function Signup() {
                                             value={props.values.confirmpassword}
                                             id="confirmpassword"
                                             type={`${"password"}`}
-                                            className="block mt-2 w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            className="block mt-2 w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
                                         />
                                     </div>
                                     <FieldError message={props.touched.confirmpassword && props.errors.confirmpassword} />
@@ -234,7 +234,7 @@ function Signup() {
                                 <div className='col-span-full mt-4'>
                                     <button
                                         type="submit"
-                                        className="flex w-full justify-center rounded-md bg-gray-800 px-3 py-1.5  text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                        className="flex w-full justify-center rounded-md bg-gray-800 px-3 py-1.5  text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
                                     >
                                         Register
                                     </button>
@@ -247,7 +247,7 @@ function Signup() {
 
                     <p className="mt-10 text-center text-sm text-gray-500">
                         Already Signed Up?{' '}
-                        <Link to="/login" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                        <Link to="/login" className="font-semibold leading-6 text-gray-600 hover:text-gray-500">
                             Login Now
                         </Link>
                     </p>

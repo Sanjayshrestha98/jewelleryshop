@@ -137,7 +137,7 @@ function SingleProduct() {
                                         </svg>
                                     </div>
                                     <p className="sr-only">4 out of 5 stars</p>
-                                    <a href="#" className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">117 reviews</a>
+                                    <a href="#" className="ml-3 text-sm font-medium text-gray-600 hover:text-gray-500">117 reviews</a>
                                 </div>
                             </div> */}
 
@@ -173,7 +173,7 @@ function SingleProduct() {
                                 <div className="mt-10">
                                     <div className="flex items-center justify-between">
                                         <h3 className="text-sm font-medium text-gray-900">Size</h3>
-                                        <a href="#" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">Size guide</a>
+                                        <a href="#" className="text-sm font-medium text-gray-600 hover:text-gray-500">Size guide</a>
                                     </div>
 
                                     <fieldset className="mt-4">
@@ -211,12 +211,12 @@ function SingleProduct() {
                                     onClick={() => {
                                         addToCart()
                                     }}
-                                    className="mt-5 flex flex-1 items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Add to Cart</button>
+                                    className="mt-5 flex flex-1 items-center justify-center rounded-md border border-transparent bg-gray-600 px-8 py-3 text-base font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">Add to Cart</button>
                                 <button type="button"
                                     onClick={() => {
                                         addToWishlist()
                                     }}
-                                    className="mt-5 flex w-fit items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                    className="mt-5 flex w-fit items-center justify-center rounded-md border border-transparent bg-gray-600 px-8 py-3 text-base font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
                                     {/* Add to Wishlist */}
                                     <FaHeart />
                                 </button>

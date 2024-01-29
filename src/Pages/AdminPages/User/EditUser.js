@@ -87,7 +87,7 @@ function EditUser({ modalIsOpen, closeModal, getRoute, profileDetails }) {
                                         name="firstname"
                                         autoComplete="firstname"
                                         required
-                                        className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
                                     />
                                 </div>
                                 <FieldError message={props.touched.firstname && props.errors.firstname} />
@@ -103,7 +103,7 @@ function EditUser({ modalIsOpen, closeModal, getRoute, profileDetails }) {
                                         name="lastname"
                                         autoComplete="lastname"
                                         required
-                                        className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
                                     />
                                 </div>
                                 <FieldError message={props.touched.lastname && props.errors.lastname} />
@@ -120,7 +120,7 @@ function EditUser({ modalIsOpen, closeModal, getRoute, profileDetails }) {
                                         name="address"
                                         autoComplete="address"
                                         required
-                                        className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
                                     />
                                 </div>
                                 <FieldError message={props.touched.address && props.errors.address} />
@@ -136,7 +136,7 @@ function EditUser({ modalIsOpen, closeModal, getRoute, profileDetails }) {
                                         name="contact"
                                         autoComplete="contact"
                                         required
-                                        className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
                                     />
                                 </div>
                                 <FieldError message={props.touched.contact && props.errors.contact} />
@@ -159,7 +159,7 @@ function EditUser({ modalIsOpen, closeModal, getRoute, profileDetails }) {
                                         type="email"
                                         autoComplete="email"
                                         required
-                                        className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
                                     />
                                 </div>
                                 <FieldError message={props.touched.email && props.errors.email} />
@@ -169,7 +169,7 @@ function EditUser({ modalIsOpen, closeModal, getRoute, profileDetails }) {
                             <div className='col-span-full mt-4'>
                                 <button
                                     type="submit"
-                                    className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 px-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                    className="flex w-full justify-center rounded-md bg-gray-600 px-3 py-1.5 px-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
                                 >
                                     Register
                                 </button>

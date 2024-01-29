@@ -91,7 +91,7 @@ function Wishlist() {
                                         }
                                         {/* <li className="flex py-6">
                                     <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                        <img src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg" alt="Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch." className="h-full w-full object-cover object-center" />
+                                        <img src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg" alt="Front of satchel with gray canvas body, black straps and handle, drawstring top, and front zipper pouch." className="h-full w-full object-cover object-center" />
                                     </div>
 
                                     <div className="ml-4 flex flex-1 flex-col">
@@ -102,7 +102,7 @@ function Wishlist() {
                                                 </h3>
                                                 <p className="ml-4">$32.00</p>
                                             </div>
-                                            <p className="mt-1 text-sm text-gray-500">Blue</p>
+                                            <p className="mt-1 text-sm text-gray-500">gray</p>
                                         </div>
                                         <div className="flex flex-1 items-center mt-2 justify-end text-sm">
                                             <button type="button" className="font-medium text-red-600 hover:text-red-500">Remove</button>
