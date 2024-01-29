@@ -16,6 +16,7 @@ function Orders() {
     const [totalOrderPage, setTotalOrderPage] = useState(1)
     const [orderPageSize, setOrderPageSize] = useState(10)
     const [keyword, setKeyword] = useState("")
+    const [cartkeyword, setCartKeyword] = useState("")
 
     const closeAddModal = () => {
         setIsAddModalOpen(false)
@@ -34,7 +35,8 @@ function Orders() {
         try {
             let result = await axios.get('cart/admin/order', {
                 params: {
-                    search: keyword,
+                    email: keyword,
+                    cart_no: cartkeyword,
                     page: currentOrderPage,
                     size: orderPageSize
                 }
@@ -140,9 +142,13 @@ function Orders() {
           openAddModal()
         }} className='bg-gray-800 p-3 rounded-md text-white font-semibold px-4'>Add Order</button> */}
             </div>
-            <div>
+            <div className='flex flex-wrap gap-3'>
                 <input className='border p-2' type='string' placeholder='Search By Email' onChange={(e) => {
                     setKeyword(e.target.value)
+                    setCurrentOrderPage(1)
+                }} />
+                <input className='border p-2' type='string' placeholder='Search By Card #' onChange={(e) => {
+                    setCartKeyword(e.target.value)
                     setCurrentOrderPage(1)
                 }} />
             </div>
