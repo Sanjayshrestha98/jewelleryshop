@@ -20,7 +20,7 @@ function CheckoutPage({ modalIsOpen, closeModal, getRoute, cartData }) {
                     closeModal()
                     // setSelectedVariantData(result?.data?.data?.variant[0] ? result?.data?.data?.variant[0] : [])
                 } else toast.error('Failed')
-            }else toast.error('Please add shipping address')
+            } else toast.error('Please add shipping address')
         } catch (ERR) {
             console.log(ERR)
             toast.error(ERR?.response?.data?.msg)
@@ -29,16 +29,37 @@ function CheckoutPage({ modalIsOpen, closeModal, getRoute, cartData }) {
 
     return (
         <Modal
-        ariaHideApp={false}
+            ariaHideApp={false}
             isOpen={modalIsOpen}
             onRequestClose={closeModal}
             contentLabel="Add Category Modal"
             overlayClassName="Overlay"
-            className="Modal rounded-md p-5 md:w-1/4 max-h-screen overflow-auto"
+            className="Modal rounded-md p-5 md:w-2/4 max-h-screen overflow-auto"
         >
-            <form className="w-full  px-4 py">
-                <div className="bg-gray-50 rounded-xl shadow-md p-6">
-                    <h2 className="text-gray-700 text-lg mb-4 font-semibold">Cart totals</h2>
+            <div className="w-full gap-4 flex px-4 py">
+                <div className=" w-full rounded-xl  p-6">
+                    <h2 className="text-gray-700 text-lg mb-2 font-semibold">Mode of Payment</h2>
+                    <p className="text-gray-500 font-semibold">Cash on Delivery</p>
+
+
+
+
+                    <div className="mt-4">
+                        <div className="flex items-center justify-between flex-wrap gap-2">
+                            <p className="text-gray-600 font-semibold">Shipping Address</p>
+                            <input
+                                required
+                                className="block mt-2 w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
+                                placeholder='Enter Shipping Address'
+                                type='string' onChange={(e) => {
+                                    setShippingAddress(e.target.value)
+                                }} />
+                        </div>
+                    </div>
+
+                </div>
+                <div className="bg-gray-50 w-full rounded-xl shadow-md p-6">
+                    <h2 className="text-gray-700 text-lg mb-4 font-semibold">Your Bill</h2>
                     <div className="pb-4 border-b border-gray-200 flex flex-wrap gap-2 justify-between items-center mb-4">
                         <p className="text-gray-600">Subtotal</p>
                         <p className="text-gray-800">Rs. {cartData?.cart?.total}</p>
@@ -54,24 +75,7 @@ function CheckoutPage({ modalIsOpen, closeModal, getRoute, cartData }) {
                             <p className="text-gray-800">Rs. 00.00</p>
                         </div>
                     </div>
-                    <div className="mb-4">
-                        <div className="flex items-center justify-between flex-wrap gap-2">
-                            <p className="text-gray-600">Mode of Payment</p>
-                            <p className="text-gray-800 font-semibold">Cash on Delivery</p>
-                        </div>
-                    </div>
-                    <div className="mb-4">
-                        <div className="flex items-center justify-between flex-wrap gap-2">
-                            <p className="text-gray-600">Shipping Address</p>
-                            <input
-                                required
-                                className="block mt-2 w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
-                                placeholder='Enter Shipping Address'
-                                type='string' onChange={(e) => {
-                                    setShippingAddress(e.target.value)
-                                }} />
-                        </div>
-                    </div>
+                  
                     {/* <div className="pb-4 border-b border-gray-200 mb-4"><a className="text-gray-500 hover:text-gray-600 transition duration-200" href="#">Change Shipping Address</a></div> */}
                     <div className="flex items-center justify-between flex-wrap gap-2 mb-4 mt-10">
                         <label className="text-gray-700 font-semibold text-lg">Order Total</label>
@@ -85,7 +89,7 @@ function CheckoutPage({ modalIsOpen, closeModal, getRoute, cartData }) {
                         closeModal()
                     }} className="bg-gray-500 mt-4 py-3 px-4 rounded-sm text-white text-center hover:bg-gray-600 transition duration-200 w-full inline-block">Cancel</button>
                 </div>
-            </form>
+            </div>
 
         </Modal>
     )

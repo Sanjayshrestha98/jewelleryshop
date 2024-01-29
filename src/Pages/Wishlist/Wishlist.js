@@ -62,23 +62,22 @@ function Wishlist() {
                         <div className="flex md:flex-row flex-col gap-5 mt-5">
                             <div className="pointer-events-auto  w-full">
                                 <div className="px-4 py-6 sm:pl-0">
-                                    <ul role="list" className="-my-6 divide-y divide-gray-200">
+                                    <ul role="list" className="-my-6 divide-y divide-gray-200 grid grid-cols-1 sm:grid-cols-2 gap-3 ">
                                         {
                                             wishlistData?.map((value, index) => (
-                                                <li className="flex py-6" key={index}>
+                                                <li className="flex py-6 shadow px-8" key={index} >
                                                     <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                                         <img src={`${process.env.REACT_APP_IMG_URI}${value?.product?.images[0]}`} alt="Wishlist product." className="h-full w-full object-cover object-center" />
                                                     </div>
 
                                                     <div className="ml-4 flex flex-1 flex-col">
                                                         <div>
-                                                            <div className="flex justify-between text-base font-medium text-gray-900">
-                                                                <h3>
+                                                            <div className="flex justify-between text-base font-medium text-gray-900 capitalize">
+                                                                <h3 > 
                                                                     <a href={`product/` + value?.product?.product_sku}>{value?.product?.product_name}</a>
                                                                 </h3>
-                                                                <p className="ml-4">Rs. {value?.product.price}</p>
                                                             </div>
-                                                            {/* <p className="mt-1 text-sm text-gray-500">Salmon</p> */}
+                                                            <p className="">Rs. {value?.product.price}</p>
                                                         </div>
                                                         <div className="flex flex-1 items-center mt-2 justify-end text-sm">
                                                             <button onClick={() => {

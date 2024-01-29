@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../context/authContext';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from '../axios';
-import { MdArrowBackIos, MdOutlineMenu, MdOutlineShoppingBag } from 'react-icons/md'
-import { GoBell, GoHeart, GoSearch } from 'react-icons/go'
+import { MdArrowBackIos, MdOutlineMenu, MdOutlineShoppingBag, MdShoppingCartCheckout } from 'react-icons/md'
+import { GoBell, GoHeart, GoHeartFill, GoSearch } from 'react-icons/go'
 import { FaBars, FaThumbsUp } from 'react-icons/fa'
 import SideNav from './SideNav';
 import { FaHamburger } from 'react-icons/fa'
@@ -151,7 +151,16 @@ const Header = () => {
                             alt="applogo"
                         />
                     </a>
-
+                    <div className="flex lg:hidden">
+                        <button
+                            type="button"
+                            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+                            onClick={() => setMobileMenuOpen(true)}
+                        >
+                            <span className="sr-only">Open main menu</span>
+                            <FaBars className="h-6 w-6" aria-hidden="true" />
+                        </button>
+                    </div>
 
                     <div className="hidden lg:flex lg:flex-1 lg:justify-end">
                         <div className="flex items-center">
@@ -160,13 +169,13 @@ const Header = () => {
                                     <div className="flex items-center mr-8 gap-4">
                                         <div className=" transform cursor-pointer hover:scale-110">
                                             <Link to={"/wishlist"}>
-                                                <GoHeart size={23} strokeWidth={0.5} />
+                                                <GoHeartFill size={23} strokeWidth={0.5} />
                                             </Link>
                                         </div>
 
                                         <div className=" transform cursor-pointer hover:scale-110">
                                             <Link to={"/cartpage"}>
-                                                <MdOutlineShoppingBag size={23} />
+                                                <MdShoppingCartCheckout size={23} />
 
                                             </Link>
                                         </div>
@@ -337,30 +346,17 @@ const Header = () => {
                                         {isAuthenticated ? (
                                             <div className="flex items-center">
                                                 <div className="flex items-center mr-8 gap-4">
-                                                    <div
-                                                        onClick={notificationHandler}
-                                                        className="relative transform cursor-pointer hover:scale-110"
-                                                    >
-                                                        <img src="/notification.png" />
-                                                        <div className="animate-ping w-2 h-2 rounded-full bg-red-400 border border-white absolute left-3 top-0" />
-                                                    </div>
-
+                                                 
                                                     <div className=" transform cursor-pointer hover:scale-110">
                                                         <Link to={"/wishlist"}>
-                                                            <img src="/heartoutline.png" />
-
-                                                        </Link>
-                                                    </div>
-
-                                                    <div className=" transform cursor-pointer hover:scale-110">
-                                                        <Link to={"/like"}>
-                                                            <FaThumbsUp size={20} className="" />
+                                                            <GoHeartFill size={23} strokeWidth={0.5} />
                                                         </Link>
                                                     </div>
 
                                                     <div className=" transform cursor-pointer hover:scale-110">
                                                         <Link to={"/cartpage"}>
-                                                            <img src="/Cart.png" />
+                                                            <MdOutlineShoppingBag size={23} />
+
                                                         </Link>
                                                     </div>
                                                 </div>

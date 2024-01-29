@@ -99,35 +99,33 @@ function AllProducts() {
                                 <div className="lg:hidden block">
                                     <h3 className="sr-only">Categories</h3>
                                     <ul className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
-                                        <li>
-                                            <a href="#" className="" role="menuitem" tabindex="-1" id="menu-item-0">Most Popular</a>
+                                        <li role='button' onClick={() => {
+                                            setDateFilter(1)
+                                        }} className={`${dateFilter === 1 ? "bg-gray-50" : ""} p-2`}>
+                                            Oldest
                                         </li>
-                                        <li>
-                                            <a href="#" className="" role="menuitem" tabindex="-1" id="menu-item-1">Best Rating</a>
+                                        <li onClick={() => {
+                                            setDateFilter(-1)
+                                        }} role='button' className={`${dateFilter === -1 ? "bg-gray-50" : ""} p-2`} >
+                                            Newest
                                         </li>
-                                        <li>
-                                            <a href="#" className="" role="menuitem" tabindex="-1" id="menu-item-2">Newest</a>
+                                        <li role='button' onClick={() => {
+                                            setPriceFilter(1)
+                                        }} className={`${priceFilter === 1 ? "bg-gray-50" : ""} p-2`}>
+                                            Price: Low to High
                                         </li>
-                                        <li>
-                                            <a href="#" className="" role="menuitem" tabindex="-1" id="menu-item-3">Price: Low to High</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" className="" role="menuitem" tabindex="-1" id="menu-item-4">Price: High to Low</a>
+                                        <li role='button' onClick={() => {
+                                            setPriceFilter(-1)
+                                        }} className={`${priceFilter === -1 ? "bg-gray-50" : ""} p-2`}>
+                                            Price: High to Low
                                         </li>
                                     </ul>
 
-                                    <div className="border-b border-gray-200 py-6">
+                                    {/* <div className="border-b border-gray-200 py-6">
                                         <h3 className="-my-3 flow-root">
                                             <div className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-section-1" aria-expanded="false">
                                                 <span className="font-medium text-gray-900">Category</span>
-                                                <span className="ml-6 flex items-center">
-                                                    <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                        <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-                                                    </svg>
-                                                    <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                        <path fillRule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clipRule="evenodd" />
-                                                    </svg>
-                                                </span>
+                                               
                                             </div>
                                         </h3>
                                         <div className="pt-6" id="filter-section-1">
@@ -154,20 +152,8 @@ function AllProducts() {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="border-b border-gray-200 py-6">
-                                        <h3 className="-my-3 flow-root">
-                                            {/* <!-- Expand/collapse section button --> */}
-                                            <button type="button" className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-section-2" aria-expanded="false">
-                                                <span className="font-medium text-gray-900">Price</span>
-
-                                            </button>
-                                        </h3>
-                                        {/* <!-- Filter section, show/hide based on section state. --> */}
-                                        <div className="pt-6" id="filter-section-2">
-                                            <input type='range' step={1} />
-                                        </div>
-                                    </div>
+                                    </div> */}
+                                    
                                 </div>
                             </div>
                         </div>
@@ -176,26 +162,69 @@ function AllProducts() {
 
                 <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-10">
-                        <h1 className="text-4xl font-bold tracking-tight text-gray-900">Products</h1>
+                        <h1 className="text-4xl font-bold tracking-tight text-gray-900 px-5">Products</h1>
                         <button className='lg:hidden block' onClick={() => {
                             setShowFilter(true)
                         }}><FaFilter /></button>
-
                     </div>
 
-                    <section aria-labelledby="products-heading" className="pb-24 pt-6">
+                    <ul role="list" className=" hidden lg:flex flex-wrap justify-end gap-3 border-b border-gray-200 p-4 text-sm font-medium text-gray-900">
+
+                        <p className='p-2'>Sort By:</p>
+                        <li role='button' onClick={() => {
+                            setDateFilter(1)
+                        }} className={`${dateFilter === 1 ? "bg-gray-50" : ""} p-2`}>
+                            Oldest
+                        </li>
+                        <li onClick={() => {
+                            setDateFilter(-1)
+                        }} role='button' className={`${dateFilter === -1 ? "bg-gray-50" : ""} p-2`} >
+                            Newest
+                        </li>
+                        <li role='button' onClick={() => {
+                            setPriceFilter(1)
+                        }} className={`${priceFilter === 1 ? "bg-gray-50" : ""} p-2`}>
+                            Price: Low to High
+                        </li>
+                        <li role='button' onClick={() => {
+                            setPriceFilter(-1)
+                        }} className={`${priceFilter === -1 ? "bg-gray-50" : ""} p-2`}>
+                            Price: High to Low
+                        </li>
+                    </ul>
+
+                    <div className="mx-auto max-w-2xl px-4 lg:max-w-7xl my-10">
+                        <div className="mt-2 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                            {productData.map((product, index) => (
+                                <Link to={`/product/${product.product_sku}`} key={index} className="group relative" role='button'>
+                                    <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                                        <img
+                                            src={`${process.env.REACT_APP_IMG_URI}${product.images[0]}`}
+                                            alt={product.imageAlt}
+                                            className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                                        />
+                                    </div>
+                                    <div className="mt-4 flex justify-between">
+                                        <div>
+                                            <h3 className="text-sm text-gray-700 capitalize">
+                                                <span aria-hidden="true" className="absolute inset-0" />
+                                                {product.product_name}
+                                            </h3>
+                                            {/* <p className="mt-1 text-sm text-gray-500 capitalize">{product.variant[0].variant_type[0].color}</p> */}
+                                        </div>
+                                        <p className="text-sm font-medium text-gray-900">Rs. {product.price}</p>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* <section aria-labelledby="products-heading" className="pb-24 pt-6">
                         <h2 id="products-heading" className="sr-only">Products</h2>
 
                         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
-                            {/* <!-- Filters --> */}
                             <div className="hidden lg:block">
-                                <h3 className="p-2 mb-2 font-semibold">Filters</h3>
-                                <ul role="list" className="space-y-1 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
-                                    {/* <li className=''>
-                                        <button onClick={() => {
-                                            setPriceFilter(1)
-                                        }} className="">Most Popular</button>
-                                    </li> */}
+                                <ul role="list" className="space-y-1 flex border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
                                     <li role='button' onClick={() => {
                                         setDateFilter(1)
                                     }} className={`${dateFilter === 1 ? "bg-gray-50" : ""} p-2`}>
@@ -256,18 +285,9 @@ function AllProducts() {
                                         </div>
                                     </div>
                                 </div>
-                                {/* <div className="border-b border-gray-200 py-6">
-                                    <h3 className="-my-3 flow-root">
-                                        <button type="button" className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-section-2" aria-expanded="false">
-                                            <span className="font-medium text-gray-900">Price</span>
-
-                                        </button>
-                                    </h3>
-                                    <div className="pt-6" id="filter-section-2">
-                                        <input type='range' step={1} />
-                                    </div>
-                                </div> */}
                             </div>
+
+
                             <div className="lg:col-span-3 border-l">
                                 <div className="mx-auto max-w-2xl px-4 lg:max-w-7xl lg:px-8">
                                     <div className="mt-2 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
@@ -286,7 +306,6 @@ function AllProducts() {
                                                             <span aria-hidden="true" className="absolute inset-0" />
                                                             {product.product_name}
                                                         </h3>
-                                                        {/* <p className="mt-1 text-sm text-gray-500 capitalize">{product.variant[0].variant_type[0].color}</p> */}
                                                     </div>
                                                     <p className="text-sm font-medium text-gray-900">Rs. {product.price}</p>
                                                 </div>
@@ -296,7 +315,7 @@ function AllProducts() {
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </section> */}
                 </main>
             </div>
         </div >
