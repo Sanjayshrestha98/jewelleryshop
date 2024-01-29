@@ -38,7 +38,7 @@ export default function AdminSidebar() {
   };
 
   return (
-    <div className={`min-h-full  bg-[#151036] max-w-[200px] md:w-full ${open ? 'w-full bg-[#151036]' : 'w-10 bg-white'}`}>
+    <div className={`min-h-full  md:bg-[#151036] max-w-[200px] md:w-full ${open ? 'w-full bg-[#151036]' : 'w-10 bg-white'}`}>
       <>
         <div className="mx-auto max-w-7xl  ">
           <div className="flex flex-col h-full  justify-between">

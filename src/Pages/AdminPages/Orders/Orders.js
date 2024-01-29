@@ -58,7 +58,7 @@ function Orders() {
 
     useEffect(() => {
         getAllOrders()
-    }, [keyword, currentOrderPage, orderPageSize])
+    }, [keyword, currentOrderPage, orderPageSize, cartkeyword])
 
     const removeItem = async (id) => {
         try {
@@ -147,7 +147,7 @@ function Orders() {
                     setKeyword(e.target.value)
                     setCurrentOrderPage(1)
                 }} />
-                <input className='border p-2' type='string' placeholder='Search By Card #' onChange={(e) => {
+                <input className='border p-2' type='number' placeholder='Search By Card #' onChange={(e) => {
                     setCartKeyword(e.target.value)
                     setCurrentOrderPage(1)
                 }} />
