@@ -11,7 +11,8 @@ function AllProducts() {
 
     const navigate = useNavigate()
     const location = useLocation();
-    const { category } = location.state || {};
+    const { category, search } = location.state || {};
+
 
     const [categoryData, setCategoryData] = useState([])
     const [productData, setProductData] = useState([])
@@ -39,7 +40,7 @@ function AllProducts() {
         try {
             let result = await axios.get('/product', {
                 params: {
-                    search: "",
+                    search: search,
                     page: 1,
                     size: 50,
                     price: priceFilter,
@@ -63,11 +64,10 @@ function AllProducts() {
 
     useEffect(() => {
         getAllProducts()
-    }, [category, priceFilter, dateFilter])
+    }, [category, priceFilter, dateFilter, search])
 
     const clearFilter = () => {
-        navigate('/product', { state: { category: "" } });
-
+        navigate('/product', { state: { category: "", search: "" } });
     }
 
     return (
@@ -120,40 +120,6 @@ function AllProducts() {
                                             Price: High to Low
                                         </li>
                                     </ul>
-
-                                    {/* <div className="border-b border-gray-200 py-6">
-                                        <h3 className="-my-3 flow-root">
-                                            <div className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-section-1" aria-expanded="false">
-                                                <span className="font-medium text-gray-900">Category</span>
-                                               
-                                            </div>
-                                        </h3>
-                                        <div className="pt-6" id="filter-section-1">
-                                            <div className="space-y-4">
-                                                <div className="flex items-center">
-                                                    <input id="filter-category-0" name="category[]" value="new-arrivals" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-gray-600 focus:ring-gray-500" />
-                                                    <label for="filter-category-0" className="ml-3 text-sm text-gray-600">New Arrivals</label>
-                                                </div>
-                                                <div className="flex items-center">
-                                                    <input id="filter-category-1" name="category[]" value="sale" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-gray-600 focus:ring-gray-500" />
-                                                    <label for="filter-category-1" className="ml-3 text-sm text-gray-600">Sale</label>
-                                                </div>
-                                                <div className="flex items-center">
-                                                    <input id="filter-category-2" name="category[]" value="travel" type="checkbox" checked className="h-4 w-4 rounded border-gray-300 text-gray-600 focus:ring-gray-500" />
-                                                    <label for="filter-category-2" className="ml-3 text-sm text-gray-600">Travel</label>
-                                                </div>
-                                                <div className="flex items-center">
-                                                    <input id="filter-category-3" name="category[]" value="organization" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-gray-600 focus:ring-gray-500" />
-                                                    <label for="filter-category-3" className="ml-3 text-sm text-gray-600">Organization</label>
-                                                </div>
-                                                <div className="flex items-center">
-                                                    <input id="filter-category-4" name="category[]" value="accessories" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-gray-600 focus:ring-gray-500" />
-                                                    <label for="filter-category-4" className="ml-3 text-sm text-gray-600">Accessories</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> */}
-                                    
                                 </div>
                             </div>
                         </div>
@@ -168,8 +134,9 @@ function AllProducts() {
                         }}><FaFilter /></button>
                     </div>
 
-                    <ul role="list" className=" hidden lg:flex flex-wrap justify-end gap-3 border-b border-gray-200 p-4 text-sm font-medium text-gray-900">
 
+
+                    <ul role="list" className=" hidden lg:flex flex-wrap justify-end gap-3 border-b border-gray-200 p-4 text-sm font-medium text-gray-900">
                         <p className='p-2'>Sort By:</p>
                         <li role='button' onClick={() => {
                             setDateFilter(1)
@@ -193,8 +160,20 @@ function AllProducts() {
                         </li>
                     </ul>
 
-                    <div className="mx-auto max-w-2xl px-4 lg:max-w-7xl my-10">
-                        <div className="mt-2 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                    <div className="mx-auto max-w-2xl px-4 lg:max-w-7xl mt-2">
+
+                        {
+                            search &&
+                            <div className='flex gap-4 mt-6'>
+                                <label>Showing search results for : "{search}"</label>
+                                <button className='bg-red-100 px-3 rounded-full text-sm' onClick={() => {
+                                    clearFilter()
+                                }}>Clear</button>
+                            </div>
+                        }
+
+
+                        <div className="my-8 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                             {productData.map((product, index) => (
                                 <Link to={`/product/${product.product_sku}`} key={index} className="group relative" role='button'>
                                     <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
@@ -210,7 +189,6 @@ function AllProducts() {
                                                 <span aria-hidden="true" className="absolute inset-0" />
                                                 {product.product_name}
                                             </h3>
-                                            {/* <p className="mt-1 text-sm text-gray-500 capitalize">{product.variant[0].variant_type[0].color}</p> */}
                                         </div>
                                         <p className="text-sm font-medium text-gray-900">Rs. {product.price}</p>
                                     </div>
@@ -218,104 +196,6 @@ function AllProducts() {
                             ))}
                         </div>
                     </div>
-
-                    {/* <section aria-labelledby="products-heading" className="pb-24 pt-6">
-                        <h2 id="products-heading" className="sr-only">Products</h2>
-
-                        <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
-                            <div className="hidden lg:block">
-                                <ul role="list" className="space-y-1 flex border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
-                                    <li role='button' onClick={() => {
-                                        setDateFilter(1)
-                                    }} className={`${dateFilter === 1 ? "bg-gray-50" : ""} p-2`}>
-                                        Oldest
-                                    </li>
-                                    <li onClick={() => {
-                                        setDateFilter(-1)
-                                    }} role='button' className={`${dateFilter === -1 ? "bg-gray-50" : ""} p-2`} >
-                                        Newest
-                                    </li>
-                                    <li role='button' onClick={() => {
-                                        setPriceFilter(1)
-                                    }} className={`${priceFilter === 1 ? "bg-gray-50" : ""} p-2`}>
-                                        Price: Low to High
-                                    </li>
-                                    <li role='button' onClick={() => {
-                                        setPriceFilter(-1)
-                                    }} className={`${priceFilter === -1 ? "bg-gray-50" : ""} p-2`}>
-                                        Price: High to Low
-                                    </li>
-                                </ul>
-
-                                <div className="border-b border-gray-200 py-6">
-                                    <h3 className="-my-3 flow-root">
-                                        <button type="button" className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-section-1" aria-expanded="false">
-                                            <span className="font-medium text-gray-900">Category</span>
-                                            {
-                                                category &&
-                                                <button onClick={() => {
-                                                    clearFilter()
-                                                }} className='flex gap-2'>
-                                                    <span>Clear</span>
-                                                    <span className=" flex items-center rotate-45">
-                                                        <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                            <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-                                                        </svg>
-                                                    </span>
-                                                </button>
-                                            }
-                                        </button>
-                                    </h3>
-                                    <div className="pt-6" id="filter-section-1">
-                                        <div className="space-y-4">
-
-                                            {
-                                                categoryData.map((value, index) => (
-                                                    <div className="flex items-center">
-                                                        <input onChange={(e) => {
-                                                            // console.log('e.target.value', e.target.value)
-                                                            // setSelectedCateogry(e.target.value)
-                                                            navigate('/product', { state: { category: value._id } });
-                                                        }} id={value._id} checked={category === value._id} name={value.name} value={value._id} type="radio" className="h-4 w-4 rounded border-gray-300 text-gray-600 focus:ring-gray-500" />
-                                                        <label for={value._id} className="ml-3 text-sm text-gray-600">{value.name}</label>
-                                                    </div>
-                                                ))
-                                            }
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div className="lg:col-span-3 border-l">
-                                <div className="mx-auto max-w-2xl px-4 lg:max-w-7xl lg:px-8">
-                                    <div className="mt-2 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-                                        {productData.map((product, index) => (
-                                            <Link to={`/product/${product.product_sku}`} key={index} className="group relative" role='button'>
-                                                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                                                    <img
-                                                        src={`${process.env.REACT_APP_IMG_URI}${product.images[0]}`}
-                                                        alt={product.imageAlt}
-                                                        className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                                                    />
-                                                </div>
-                                                <div className="mt-4 flex justify-between">
-                                                    <div>
-                                                        <h3 className="text-sm text-gray-700 capitalize">
-                                                            <span aria-hidden="true" className="absolute inset-0" />
-                                                            {product.product_name}
-                                                        </h3>
-                                                    </div>
-                                                    <p className="text-sm font-medium text-gray-900">Rs. {product.price}</p>
-                                                </div>
-                                            </Link>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section> */}
                 </main>
             </div>
         </div >

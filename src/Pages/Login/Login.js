@@ -48,24 +48,27 @@ function Login() {
 
 
   return (
-    <div className="grid min-h-screen  w-full place-items-center px-6 py-12 lg:px-8">
+    <div className="grid min-h-screen bg-center bg-cover  w-full items-center  px-6 py-12 lg:px-8" style={{
+      backgroundImage: `url('/aboutpagebg.webp')`,
+      backgroundRepeat: "no-repeat"
+    }}>
       <div
-        className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
+        className="absolute inset-x-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
         aria-hidden="true"
       >
 
       </div>
       <div className='max-w-sm w-full '>
         <a href='/' className='font-semibold text-gray-600 flex items-center gap-3'>
-          <FaArrowLeft /> Back
+          <FaArrowLeft /> Home
         </a>
         <div className="mx-auto w-full ">
-          <img
+          {/* <img
             className="mx-auto h-20 w-auto"
             src="/app_logo.png"
             alt="login img"
-          />
-          <h2 className="mt-10 text-left text-2xl font-bold leading-9 tracking-tight text-gray-900">
+          /> */}
+          <h2 className="mt-10 text-left text-2xl font-bold leading-9 tracking-tight text-white">
             Log in
           </h2>
         </div>
@@ -86,7 +89,7 @@ function Login() {
                 <div>
                   <label
                     id="email"
-                    className="block w-full text-sm font-medium leading-6 text-gray-900"
+                    className="block w-full text-sm font-medium leading-6 text-white"
                   >
                     Email Address
                   </label>
@@ -102,7 +105,7 @@ function Login() {
                 <div className="mt-6  w-full">
                   <label
                     htmlFor="pass"
-                    className="block w-full text-sm font-medium leading-6 text-gray-900"
+                    className="block w-full text-sm font-medium leading-6 text-white"
                   >
                     Password
                   </label>
@@ -124,7 +127,7 @@ function Login() {
                     type="submit"
                     // onClick={() => login()}
                     role="button"
-                    className="flex w-full justify-center rounded-md bg-gray-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
+                    className="flex w-full mr-auto sm:w-1/2 justify-center rounded-md bg-gray-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
                   >
                     Sign in
                   </button>
@@ -134,7 +137,6 @@ function Login() {
           </Formik>
 
           <p className="mt-10 text-center text-sm text-gray-500">
-            Not a Member?{' '}
             <Link to="/signup" className="font-semibold leading-6 text-gray-600 hover:text-gray-500">
               Sign up
             </Link>

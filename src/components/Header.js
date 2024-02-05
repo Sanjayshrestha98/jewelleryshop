@@ -16,6 +16,7 @@ const Header = () => {
     const authUser = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const [keyword, setKeyword] = useState('')
 
     const [toggleNav, setToggleNav] = useState(true);
     const [notificationModal, setNotificationModal] = useState(false);
@@ -48,7 +49,7 @@ const Header = () => {
     }, [])
 
     const navigation = [
-        // { name: 'Home', href: '/' },
+        { name: 'Home', href: '/' },
         // {
         //     name: 'Category', href: '/category',
         //     children: categoryData ? categoryData : []
@@ -103,6 +104,13 @@ const Header = () => {
     // console.log("authUSer", authUser);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
+    const searchFunction = () => {
+        navigate('/product', {
+            state: {
+                search: keyword
+            }
+        })
+    }
 
     return (
         <div
@@ -162,10 +170,22 @@ const Header = () => {
                         </button>
                     </div>
 
-                    <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+                    <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-10">
+                        <div className='border flex '>
+                            <form onSubmit={(e) => {
+                                e.preventDefault()
+                                searchFunction()
+                            }}>
+                                <input placeholder='Search Product' type='search' onChange={(e) => {
+                                    setKeyword(e.target.value)
+                                }} className='border rounded-l border-gray-400 p-2 text-sm' />
+                                <button type='submit' className='bg-gray-800 text-white text-sm p-2 rounded-r'>Search</button>
+                            </form>
+                        </div>
                         <div className="flex items-center">
                             {isAuthenticated ? (
                                 <div className="flex items-center">
+
                                     <div className="flex items-center mr-8 gap-4">
                                         <div className=" transform cursor-pointer hover:scale-110">
                                             <Link to={"/wishlist"}>
@@ -259,7 +279,7 @@ const Header = () => {
                                 <div className="flex gap-2 mr-4  ">
                                     <div className="cursor-pointer ">
                                         <Link to={"/login"}>
-                                            <button className="px-3 py-2 font-bold  hover:bg-gray-200 duration-150 hover:scale-105 rounded-full">
+                                            <button className="px-3 py-2 font-bold  hover:bg-gray-200 duration-150 hover:scale-105 rounded">
                                                 Login
                                             </button>
                                         </Link>
@@ -267,7 +287,7 @@ const Header = () => {
 
                                     <div className="  cursor-pointer ">
                                         <Link to={"/signup"}>
-                                            <button className="px-4 py-2 border  hover:bg-gray-200 duration-150 hover:scale-105 rounded-full">
+                                            <button className="px-4 py-2  hover:bg-gray-200 duration-150 hover:scale-105 rounded">
                                                 Sign Up
                                             </button>
                                         </Link>
@@ -346,7 +366,7 @@ const Header = () => {
                                         {isAuthenticated ? (
                                             <div className="flex items-center">
                                                 <div className="flex items-center mr-8 gap-4">
-                                                 
+
                                                     <div className=" transform cursor-pointer hover:scale-110">
                                                         <Link to={"/wishlist"}>
                                                             <GoHeartFill size={23} strokeWidth={0.5} />

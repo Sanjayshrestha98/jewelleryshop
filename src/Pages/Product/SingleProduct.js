@@ -1,8 +1,10 @@
+import { Field, Form, Formik } from 'formik'
 import axios from '../../axios'
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
-import { FaHeart } from 'react-icons/fa'
+import { FaHeart, FaStar } from 'react-icons/fa'
 import { useParams } from 'react-router-dom'
+import Rating from 'react-rating'
 
 function SingleProduct() {
 
@@ -11,6 +13,7 @@ function SingleProduct() {
 
     const [productData, setProductData] = useState()
     // const [selectedVariantData, setSelectedVariantData] = useState()
+    const [ratingData, setRatingData] = useState()
 
     const getProductDetail = async () => {
         try {
@@ -18,6 +21,7 @@ function SingleProduct() {
 
             if (result.data.success) {
                 setProductData(result?.data?.data ? result?.data?.data : [])
+                getReviews(result?.data?.data?._id)
                 // setSelectedVariantData(result?.data?.data?.variant[0] ? result?.data?.data?.variant[0] : [])
             } else toast.error('Failed')
         } catch (ERR) {
@@ -53,6 +57,44 @@ function SingleProduct() {
         } catch (ERR) {
             console.log(ERR)
             toast.error(ERR?.response?.data?.msg)
+        }
+    }
+
+    const getReviews = async (id) => {
+        try {
+            let result = await axios.get('/review/' + id, {
+                params: {
+                    page: 1,
+                    size: 999
+                }
+            })
+
+            if (result.data.success) {
+                console.log(result.data.data)
+                setRatingData(result.data.data)
+                // setProductData(result?.data?.data ? result?.data?.data : [])
+                // setSelectedVariantData(result?.data?.data?.variant[0] ? result?.data?.data?.variant[0] : [])
+            } else toast.error('Failed')
+        } catch (ERR) {
+            console.log(ERR)
+            toast.error(ERR?.response?.data?.msg)
+        }
+    }
+
+    const addReview = async (values, actions) => {
+        try {
+            let result = await axios.post('/review', values)
+
+            if (result.data.success) {
+                toast.success('Review Added Successfully')
+                getProductDetail()
+                actions.resetForm()
+            } else toast.error('Failed')
+        } catch (ERR) {
+            console.log(ERR)
+            if (ERR?.response?.status === 401) {
+                toast.error('Please Login To Review.')
+            } else toast.error(ERR?.response?.data?.message)
         }
     }
 
@@ -129,6 +171,12 @@ function SingleProduct() {
                             </div>
                             <p className="text-3xl tracking-tight text-gray-900">Rs. {productData?.price}</p>
 
+                            <div className='flex items-center gap-3 my-3'>
+                                <Rating step={1} name="rating" readonly initialRating={productData?.rating} fullSymbol={<FaStar color='#ffe234' size={20} strokeWidth={2} stroke='black' />} emptySymbol={<FaStar color='white' size={20} strokeWidth={2} stroke='black' />} />
+                                <label className='mb-1'>
+                                    {productData?.rating} / 5
+                                </label>
+                            </div>
 
                             {/* <div className="mt-6">
                                 <h3 className="sr-only">Reviews</h3>
@@ -280,6 +328,66 @@ function SingleProduct() {
                             </div> */}
                         </div>
                     </div>
+                    <section className='max-w-7xl mx-auto p-4'>
+                        <h1 className='text-2xl font-semibold tracking-tight text-gray-900'>
+                            Comments
+                        </h1>
+
+                        <Formik
+                            enableReinitialize
+                            initialValues={{
+                                rating: 0,
+                                product: productData?._id,
+                                message: ""
+                            }}
+                            onSubmit={(values, actions) => {
+                                addReview(values, actions)
+                            }}
+                        >
+                            {props => (
+                                <Form>
+                                    <div className='mt-3'>
+                                        <Rating step={1} name="rating" onChange={(rating) => {
+                                            props.setFieldValue('rating', rating)
+                                        }} value={props.values.rating} initialRating={props.values.rating} fullSymbol={<FaStar color='#ffe234' size={20} strokeWidth={2} stroke='black' />} emptySymbol={<FaStar color='white' size={20} strokeWidth={2} stroke='black' />} />
+                                    </div>
+                                    <div className='my-3 flex flex-col'>
+                                        <Field name="message" value={props.values.message} as="textarea" className='w-full border mt-3 rounded p-2' placeholder='Write a Comment' />
+                                        <button type='submit' className='bg-blue-700 w-fit px-4 py-2 rounded text-white mt-3 place-self-end'>Submit</button>
+                                    </div>
+                                </Form>
+                            )}
+                        </Formik>
+
+                        <div className='mt-10'>
+                            {
+                                ratingData?.map((value, index) => (
+                                    <div className='w-full flex my-4 gap-4 shadow p-2 items-center'>
+                                        <div>
+                                            {
+                                                value.user.image ?
+                                                    <img src={`${process.env.REACT_APP_IMG_URI}${value.user.image}`} className='h-20 w-20 object-cover' />
+                                                    :
+                                                    <img src='/app_logo.png' className='h-20 w-20 object-cover' />
+                                            }
+                                        </div>
+                                        <div className='font-semibold flex flex-col gap-1'>
+                                            <div className='flex items-center gap-4 text-gray-400 text-sm'>
+                                                <label className='mb-1'>
+                                                    {value.user.firstname} {value.user.lastname}
+                                                </label>
+                                                <Rating step={1} name="rating" readonly initialRating={value?.rating} fullSymbol={<FaStar color='#ffe234' size={14} strokeWidth={2} stroke='black' />} emptySymbol={<FaStar color='white' size={14} strokeWidth={2} stroke='black' />} />
+                                            </div>
+                                            <span>
+                                                {value?.message}
+                                            </span>
+                                        </div>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </section>
+
                 </div>
             </div>
         </div>

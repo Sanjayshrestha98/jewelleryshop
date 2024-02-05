@@ -62,19 +62,22 @@ function Signup() {
 
 
     return (
-        <div className="grid min-h-screen place-items-center px-6 py-12 lg:px-8">
+        <div className="grid min-h-screen bg-center bg-cover  w-full items-center px-6 py-12 lg:px-8" style={{
+            backgroundImage: `url('/aboutpagebg.webp')`,
+            backgroundRepeat: "no-repeat"
+        }}>
             <div className='max-w-2xl w-full'>
                 <a href='/' className='font-semibold text-gray-600 flex items-center gap-3'>
-                    <FaArrowLeft /> Back
+                    <FaArrowLeft /> Home
                 </a>
 
-                <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                    <img
+                <div className="sm:mx-auto">
+                    {/* <img
                         className="mx-auto h-20 w-auto"
                         src="/app_logo.png"
                         alt="buildup"
-                    />
-                    <h2 className="mt-10 text-left text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                    /> */}
+                    <h2 className="mt-10 text-left text-2xl font-bold leading-9 tracking-tight text-white">
                         Register
                     </h2>
                 </div>
@@ -101,7 +104,7 @@ function Signup() {
                         {(props) => (
                             <Form className='gap-3 grid grid-cols-2'>
                                 <div className=''>
-                                    <label htmlFor="firstname" className="block text-sm font-medium leading-6 text-gray-900">
+                                    <label htmlFor="firstname" className="block text-sm font-medium leading-6 text-white">
                                         First Name
                                     </label>
                                     <div className="mt-2">
@@ -117,7 +120,7 @@ function Signup() {
 
                                 </div>
                                 <div>
-                                    <label htmlFor="lastname" className="block text-sm font-medium leading-6 text-gray-900">
+                                    <label htmlFor="lastname" className="block text-sm font-medium leading-6 text-white">
                                         Last Name
                                     </label>
                                     <div className="mt-2">
@@ -134,7 +137,7 @@ function Signup() {
                                 </div>
 
                                 <div className=''>
-                                    <label htmlFor="address" className="block  text-sm font-medium leading-6 text-gray-900">
+                                    <label htmlFor="address" className="block  text-sm font-medium leading-6 text-white">
                                         Address
                                     </label>
                                     <div className="mt-2">
@@ -150,7 +153,7 @@ function Signup() {
 
                                 </div>
                                 <div>
-                                    <label htmlFor="contact" className="block text-sm font-medium leading-6 text-gray-900">
+                                    <label htmlFor="contact" className="block text-sm font-medium leading-6 text-white">
                                         Contact
                                     </label>
                                     <div className="mt-2">
@@ -167,12 +170,12 @@ function Signup() {
                                 </div>
 
 
-                                <div className='col-span-full text-center opacity-15'>
+                                <div className='col-span-full text-center opacity-15 text-white'>
                                     ------------
                                 </div>
 
                                 <div className='col-span-full -mt-3'>
-                                    <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+                                    <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">
                                         Email address
                                     </label>
                                     <div className="mt-2">
@@ -192,7 +195,7 @@ function Signup() {
                                 <div className=" w-full">
                                     <label
                                         htmlFor="pass"
-                                        className="block w-full text-sm font-medium leading-6 text-gray-900"
+                                        className="block w-full text-sm font-medium leading-6 text-white"
                                     >
                                         Password
                                     </label>
@@ -212,7 +215,7 @@ function Signup() {
                                 <div className=" w-full">
                                     <label
                                         htmlFor="confirmpassword"
-                                        className="block w-full text-sm font-medium leading-6 text-gray-900"
+                                        className="block w-full text-sm font-medium leading-6 text-white"
                                     >
                                         Confirm Password
                                     </label>
